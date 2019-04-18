@@ -8,12 +8,12 @@ namespace Two_Strings
         {
             string s1 = "hello";
             string s2 = "world";
-            string x = twoStrings(s1, s2);
+            string x = twoStrings1(s1, s2);
             Console.WriteLine(x);
 
             s1 = "hi";
             s2 = "world";
-            x = twoStrings(s1, s2);
+            x = twoStrings1(s1, s2);
             Console.WriteLine(x);
         }
 
@@ -34,22 +34,53 @@ namespace Two_Strings
                 {
                     if (j == c2)
                     {
-                        r = "YES";
-                        break;
+                        return "YES";
                     }
-                }
-
-                if(r == "YES")
-                {
-                    break;
                 }
 
                 if(c1.Length != 1)
                 {
-                    y++;
-                    c1 = ns.Substring(y);
+                    c1 = ns.Substring(++y);
                     c3 = c1.ToCharArray();
                     c2 = c3[0];
+                }
+            }
+
+            return r;
+        }
+
+        static string twoStrings1(string s1, string s2)
+        {
+            string r = "NO";
+
+            int x = s1.Length;
+            int y = s2.Length;
+
+            if(x>y)
+            {
+                foreach (var i in s1)
+                {
+                    foreach (var j in s2)
+                    {
+                        if (i == j)
+                        {
+                            return "YES";
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                foreach (var i in s2)
+                {
+                    foreach (var j in s1)
+                    {
+                        if (i == j)
+                        {
+                            return "YES";
+                        }
+                    }
                 }
             }
 
