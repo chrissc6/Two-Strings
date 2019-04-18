@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Two_Strings
 {
@@ -8,12 +9,12 @@ namespace Two_Strings
         {
             string s1 = "hello";
             string s2 = "world";
-            string x = twoStrings1(s1, s2);
+            string x = twoStrings2(s1, s2);
             Console.WriteLine(x);
 
             s1 = "hi";
             s2 = "world";
-            x = twoStrings1(s1, s2);
+            x = twoStrings2(s1, s2);
             Console.WriteLine(x);
         }
 
@@ -85,6 +86,21 @@ namespace Two_Strings
             }
 
             return r;
+        }
+
+        static string twoStrings2(string s1, string s2)
+        {
+            var distS1 = s1.Distinct();
+            var distS2 = s2.Distinct();
+
+            if (distS1.Intersect(distS2).Any())
+            {
+                return "YES";
+            }
+            else
+            {
+                return "NO";
+            }
         }
     }
 }
