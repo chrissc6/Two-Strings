@@ -6,14 +6,13 @@ namespace Two_Strings
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             string s1 = "hello";
             string s2 = "world";
             string x = twoStrings(s1, s2);
             Console.WriteLine(x);
 
             s1 = "hi";
-            s2 = "workd";
+            s2 = "world";
             x = twoStrings(s1, s2);
             Console.WriteLine(x);
         }
@@ -21,6 +20,38 @@ namespace Two_Strings
         static string twoStrings(string s1, string s2)
         {
             string r = "NO";
+
+            string ns = s1;
+            int x = s1.Length;
+            int y = 0;
+            string c1 = ns.Substring(y);
+            char[] c3 = c1.ToCharArray();
+            char c2 = c3[0];
+
+            for (int i = 0; i < x; i++)
+            {
+                foreach (var j in s2)
+                {
+                    if (j == c2)
+                    {
+                        r = "YES";
+                        break;
+                    }
+                }
+
+                if(r == "YES")
+                {
+                    break;
+                }
+
+                if(c1.Length != 1)
+                {
+                    y++;
+                    c1 = ns.Substring(y);
+                    c3 = c1.ToCharArray();
+                    c2 = c3[0];
+                }
+            }
 
             return r;
         }
